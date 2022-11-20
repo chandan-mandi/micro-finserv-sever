@@ -1,6 +1,5 @@
 const mongoose = require('mongoose')
 const dotenv = require('dotenv').config();
-const color = require('colors')
 
 
 const app = require('./app');
@@ -9,7 +8,7 @@ const app = require('./app');
 // mongoose.connect(process.env.DATABASE_SERVER, 
 //   () => console.log("Mongoose connected"));
 //   .then(() => {
-//     console.log(`Micro-Finserv Database connection is successful.`.yellow.bold);
+//     console.log(`Micro-Finserv Database connection is successful.`);
 // }
 // )
 
