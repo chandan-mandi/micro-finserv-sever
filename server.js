@@ -5,12 +5,10 @@ const dotenv = require('dotenv').config();
 const app = require('./app');
 
 // database connection
-// mongoose.connect(process.env.DATABASE_SERVER, 
-//   () => console.log("Mongoose connected"));
-//   .then(() => {
-//     console.log(`Micro-Finserv Database connection is successful.`);
-// }
-// )
+mongoose.connect(process.env.DATABASE_SERVER).then(() => {
+    console.log(`Micro-Finserv Database connection is successful.`);
+}
+)
 
 const port = process.env.PORT || 3000;
 
