@@ -6,7 +6,7 @@ const color = require('colors')
 const app = require('./app');
 
 // database connection
-mongoose.connect(process.env.DATABASE_LOCAL).then(() => {
+mongoose.connect(process.env.DATABASE_SERVER).then(() => {
     console.log(`Micro-Finserv Database connection is successful.`.yellow.bold);
 })
 

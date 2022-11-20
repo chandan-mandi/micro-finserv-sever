@@ -11,7 +11,9 @@ exports.getUsers = async (req, res, next) => {
         console.log(fields);
      }
     try {
+        console.log('hit get user')
         const users = await User.find({})
+        console.log('find user', users)
         // .select(req.query)
         res.json({
             status: "success",
