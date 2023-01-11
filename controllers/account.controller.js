@@ -56,18 +56,16 @@ exports.getAccountById = async (req, res, next) => {
 exports.updateAccountById = async (req, res, next) => {
     const id = req.params;
     const {pay_amt, pay_date, due_date, remarks, collector} = req.body;
-    console.log('pay-amt', pay_amt, pay_date, due_date)
-
+    console.log('from client installment', req.body)
     try {
         const account = await getAccountByIdService(id);
         const updateAc = (account) => {
             if (account) {
                 const result = [];
-                // console.log('get ac', account.installments)
+                console.log('get ac', account.installments)
                 for (const installment of account.installments) {
-                    if(installment.due_date)
+                    // if(installment.due_date)
                     if (installment.due_date.includes(due_date)) {
-                        console.log(installment.due_date)
                         result.push({ ...installment, 
                             pay_amt: Number(pay_amt),
                             pay_date: pay_date,
@@ -84,7 +82,7 @@ exports.updateAccountById = async (req, res, next) => {
         }
 
         const newInstallments = updateAc(account)
-        // console.log('upateac:', newInstallments)
+        console.log('upateac:', newInstallments)
         const updatedAc = await updateAccountByIdService(id, newInstallments);
         res.status(200).json({
             status: "success",

@@ -24,7 +24,8 @@ const accountSchema = mongoose.Schema({
     total_amt_with_interest: {},
     installment_amount: {},
     last_installment: {},
-    extra_amount: {}
+    extra_amount: {},
+    user_id: {}
 
 }, {
     timestamps: true

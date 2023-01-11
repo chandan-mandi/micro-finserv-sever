@@ -2,11 +2,11 @@ const Account = require("../models/account");
 const User = require("../models/user");
 
 exports.createAccountService = async(data, userId) => {
-    console.log('service data', userId)
     const account = await Account.create(data);
-    console.log('created account', account)
     const result = await User.updateOne(
-        { _id: userId }, {account_no: account._id}, {
+        { _id: userId }, 
+        { $push: { account_no: account._id } }, 
+        {
             runValidators: true
         }
     )
@@ -21,7 +21,7 @@ exports.getAccountByIdService = async({id}) => {
 }
 
 exports.updateAccountByIdService = async({id}, newInstallments) => {
-    // console.log('new inst', newInstallments)
+    console.log('new inst', newInstallments)
     // console.log('new id', id)
     const updatedAc = await Account.updateOne({_id: id}, {$set: {installments: newInstallments}}, {
         runValidators: true

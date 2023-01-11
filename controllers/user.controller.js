@@ -8,12 +8,10 @@ exports.getUsers = async (req, res, next) => {
     if(req.query.fields){
         const fields=req.query.fields.split(',').join(' ')
         queries.fields=fields
-        console.log(fields);
      }
     try {
         console.log('hit get user')
         const users = await User.find({})
-        console.log('find user', users)
         // .select(req.query)
         res.json({
             status: "success",
